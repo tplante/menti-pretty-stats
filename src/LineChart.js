@@ -47,7 +47,9 @@ const LAYOUT = {
 const MARGIN = { top: 20, right: 20, bottom: 50, left: 40 };
 const TICK_PADDING = 15;
 const STROKE_WIDTH = 3;
-const FONT_SIZE = 14;
+const INNER_TICK_PADDING = 3;
+const FONT_SIZE = 15;
+const LARGE_FONT_SIZE = 18;
 
 class LineChart extends PureComponent {
   node = createRef();
@@ -97,7 +99,7 @@ class LineChart extends PureComponent {
       .selectAll("path")
       .attr("stroke", huskyDark)
       .attr("stroke-width", STROKE_WIDTH);
-    axes.selectAll("text").attr("font-size", FONT_SIZE);
+    axes.selectAll("text").attr("font-size", LARGE_FONT_SIZE);
     axes.selectAll("line").attr("stroke", huskyDark);
     axes
       .selectAll("text")
@@ -106,7 +108,7 @@ class LineChart extends PureComponent {
     x.selectAll(".tick")
       .append("text")
       .text((_, i) => data[i].type)
-      .attr("y", TICK_PADDING + FONT_SIZE)
+      .attr("y", TICK_PADDING + LARGE_FONT_SIZE + INNER_TICK_PADDING)
       .attr("dy", "0.71em") // Same as is assigned to ticks by d3
       .attr("fill", poodle)
       .attr("font-size", FONT_SIZE);

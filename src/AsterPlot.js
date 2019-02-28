@@ -7,12 +7,8 @@ import {
   greenLight,
   orangeLight,
   purpleLight,
-  yellowLight,
-  poodle,
-  poodleDark,
   husky,
-  huskyDark,
-  blue
+  poodleDark
 } from "@mentimeter/ragnar-colors";
 
 // Components
@@ -20,39 +16,41 @@ import { Box } from "@mentimeter/ragnar-web";
 
 const data = [
   {
-    type: "Heading",
+    type: "Informational",
     color: redLight,
     votes: 8 // Reactions
   },
   {
-    type: "Scales",
+    type: "Fun",
     color: blueLight,
     votes: 12
   },
   {
-    type: "Multiple choice",
+    type: "Feedback",
     color: pinkLight,
     votes: 14
   },
   {
-    type: "Speech bubbles",
+    type: "Interactive",
     color: greenLight,
     votes: 41
   },
   {
-    type: "Word cloud",
+    type: "Collaboration",
     color: orangeLight,
     votes: 42
   },
   {
-    type: "Ranking",
+    type: "Data Collection",
     color: purpleLight,
     votes: 24
   }
 ];
 
-const DIAMETER = 540;
+const DIAMETER = 450;
+const MARGIN = 30;
 const INNER_RADIUS = 10;
+const LARGE_FONT_SIZE = 18;
 
 class AsterPlot extends PureComponent {
   node = createRef();
@@ -83,14 +81,22 @@ class AsterPlot extends PureComponent {
     const svg = d3
       .select(chart)
       .attr("transform", `translate(${DIAMETER / 2}, ${DIAMETER / 2})`);
+    const tooltip = d3
+      .select(chart)
+      .append("text")
+      .attr("y", DIAMETER / 2 + MARGIN)
+      .attr("text-anchor", "middle")
+      .attr("font-family", "Gilroy")
+      .attr("font-size", LARGE_FONT_SIZE)
+      .attr("fill", poodleDark)
+      .attr("opacity", 0);
     // Outer arc
     const outerPath = svg.selectAll(".outer-arc").data(pie(data));
     outerPath
       .enter()
       .append("path")
       .attr("class", "outer-arc")
-      .attr("fill", huskyDark)
-      .attr("fill-opacity", 0.3)
+      .attr("fill", husky)
       .attr("d", outlineArc);
     // Inner arc
     const path = svg.selectAll(".arc").data(pie(data));
@@ -99,7 +105,14 @@ class AsterPlot extends PureComponent {
       .append("path")
       .attr("class", "arc")
       .attr("fill", d => d.data.color)
-      .attr("d", arc);
+      .attr("d", arc)
+      .on("mouseover", d =>
+        tooltip
+          .text(d.data.type)
+          .transition()
+          .attr("opacity", 1)
+      )
+      .on("mouseout", () => tooltip.transition().attr("opacity", 0));
   };
 
   render() {
@@ -110,6 +123,7 @@ class AsterPlot extends PureComponent {
           height="100%"
           viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}
           preserveAspectRatio="xMidYMid"
+          style={{ overflow: "visible" }}
         >
           <g ref={this.node} />
         </svg>
