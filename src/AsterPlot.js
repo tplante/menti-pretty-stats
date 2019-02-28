@@ -51,6 +51,7 @@ const DIAMETER = 450;
 const MARGIN = 30;
 const INNER_RADIUS = 10;
 const LARGE_FONT_SIZE = 18;
+const TOOLTIP_CIRCLE_RADIUS = 7;
 
 class AsterPlot extends PureComponent {
   node = createRef();
@@ -83,13 +84,20 @@ class AsterPlot extends PureComponent {
       .attr("transform", `translate(${DIAMETER / 2}, ${DIAMETER / 2})`);
     const tooltip = d3
       .select(chart)
+      .append("g")
+      .attr("transform", `translate(0, ${DIAMETER / 2 + MARGIN})`)
+      .attr("opacity", 0);
+    tooltip
+      .append("circle")
+      .attr("r", TOOLTIP_CIRCLE_RADIUS)
+      .attr("cy", MARGIN / 2)
+      .attr("fill", "transparent");
+    tooltip
       .append("text")
-      .attr("y", DIAMETER / 2 + MARGIN)
       .attr("text-anchor", "middle")
       .attr("font-family", "Gilroy")
       .attr("font-size", LARGE_FONT_SIZE)
-      .attr("fill", poodleDark)
-      .attr("opacity", 0);
+      .attr("fill", poodleDark);
     // Outer arc
     const outerPath = svg.selectAll(".outer-arc").data(pie(data));
     outerPath
@@ -106,12 +114,14 @@ class AsterPlot extends PureComponent {
       .attr("class", "arc")
       .attr("fill", d => d.data.color)
       .attr("d", arc)
-      .on("mouseover", d =>
+      .on("mouseover", d => {
+        tooltip.select("text").text(d.data.type);
         tooltip
-          .text(d.data.type)
+          .select("circle")
           .transition()
-          .attr("opacity", 1)
-      )
+          .attr("fill", d.data.color);
+        tooltip.transition().attr("opacity", 1);
+      })
       .on("mouseout", () => tooltip.transition().attr("opacity", 0));
   };
 

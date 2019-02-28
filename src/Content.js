@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text } from "@mentimeter/ragnar-web";
+import { Box, Border, Text } from "@mentimeter/ragnar-web";
 import { shade, blueLight } from "@mentimeter/ragnar-colors";
 
 // Charts
@@ -13,7 +13,7 @@ const boxBackground = shade(blueLight, "white", ALPHA);
 const Content = () => (
   <Box width="100%" bg="shade-1">
     <Box alignItems="center" width="100%" pb={6} pt={5}>
-      <Text fontSize={8} color="brand" fontWeight="bold" mb={4}>
+      <Text fontSize={9} color="brand" fontWeight="bold" mb={4}>
         Your Menti Level: Master
       </Text>
       <Text fontSize={7} mb={4}>
@@ -25,12 +25,13 @@ const Content = () => (
         width="100%"
         maxWidth={1000}
       >
-        <Box
+        <Border
           alignItems="center"
           justifyContent="center"
           width={BOX_SIZE}
           height={BOX_SIZE}
           bg={boxBackground}
+          borderRadius={1}
         >
           <Text mb={2} fontSize={3} textAlign="center">
             How many{" "}
@@ -42,13 +43,14 @@ const Content = () => (
           <Text fontSize={6} fontWeight="bold">
             3
           </Text>
-        </Box>
-        <Box
+        </Border>
+        <Border
           alignItems="center"
           justifyContent="center"
           width={BOX_SIZE}
           height={BOX_SIZE}
           bg={boxBackground}
+          borderRadius={1}
         >
           <Text mb={2} fontSize={3} textAlign="center">
             How many{" "}
@@ -60,13 +62,14 @@ const Content = () => (
           <Text fontSize={6} fontWeight="bold">
             35
           </Text>
-        </Box>
-        <Box
+        </Border>
+        <Border
           alignItems="center"
           justifyContent="center"
           width={BOX_SIZE}
           height={BOX_SIZE}
           bg={boxBackground}
+          borderRadius={1}
         >
           <Text mb={2} fontSize={3} textAlign="center">
             How many{" "}
@@ -78,13 +81,14 @@ const Content = () => (
           <Text fontSize={6} fontWeight="bold">
             100
           </Text>
-        </Box>
-        <Box
+        </Border>
+        <Border
           alignItems="center"
           justifyContent="center"
           width={BOX_SIZE}
           height={BOX_SIZE}
           bg={boxBackground}
+          borderRadius={1}
         >
           <Text mb={2} fontSize={3} textAlign="center">
             How much{" "}
@@ -96,7 +100,7 @@ const Content = () => (
           <Text fontSize={6} fontWeight="bold">
             74
           </Text>
-        </Box>
+        </Border>
       </Box>
     </Box>
     <Box alignItems="center" width="100%" pt={90} px={5} bg="white">
@@ -119,21 +123,21 @@ const Content = () => (
       </Box>
       <Box flexDirection="row" alignItems="center" width="100%" pb={150}>
         <Box alignItems="center" width="50%" px={5}>
-          <Text fontSize={3} mt={5}>
+          <Text fontSize={3} mt={5} textAlign="center">
             The engagement over time is almost at optimal pace.
           </Text>
-          <Text fontSize={3}>
+          <Text fontSize={3} textAlign="center">
             Consider adding a Quiz slide to keep the energy up?
           </Text>
         </Box>
         <Box alignItems="center" width="50%" px={5}>
-          <Text fontSize={3} mt={5}>
+          <Text fontSize={3} mt={5} textAlign="center">
             Your most engaging slides are{" "}
-            <Text fontWeight="bold" fontSize={3}>
+            <Text fontWeight="bold" fontSize={3} textAlign="center">
               Word Cloud and Ranking
             </Text>
             . This makes your presentation highly{" "}
-            <Text fontWeight="bold" fontSize={3}>
+            <Text fontWeight="bold" fontSize={3} textAlign="center">
               {" "}
               Collaborative and Interactive.
             </Text>
