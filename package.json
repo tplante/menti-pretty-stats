@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mentimeter/ragnar-dsc": "^1.0.6-next-129096.0",
+    "@mentimeter/ragnar-fonts": "^0.0.2-next-40ca99.0",
+    "@mentimeter/ragnar-react": "^1.0.1-next-ac168a.0",
+    "@mentimeter/ragnar-reset": "^1.0.1-next-ac168a.0",
+    "@mentimeter/ragnar-web": "^2.1.8-next-129096.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "react-spring": "^8.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
