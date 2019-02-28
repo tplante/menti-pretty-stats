@@ -1,10 +1,12 @@
 import React from "react";
 import { Box } from "@mentimeter/ragnar-web";
 import Content from "./Content";
+import LineChart from "./LineChart";
 
 const App = () => (
-  <Box maxWidth="100vw">
+  <Box width="100%" alignItems="center">
     <Content />
+    <LineChart />
   </Box>
 );
 
