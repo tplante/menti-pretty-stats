@@ -7,36 +7,36 @@ import { Box } from "@mentimeter/ragnar-web";
 
 const data = [
   {
-    type: "Heading",
-    votes: 8 // Reactions
-  },
-  {
-    type: "Scales",
-    votes: 12
+    type: "Images",
+    votes: 18 // Reactions
   },
   {
     type: "Multiple choice",
-    votes: 14
+    votes: 15
   },
   {
-    type: "Speech bubbles",
-    votes: 41
+    type: "Multiple choice",
+    votes: 18
   },
   {
-    type: "Word cloud",
-    votes: 42
+    type: "Multiple choice",
+    votes: 18
   },
   {
-    type: "Ranking",
-    votes: 24
+    type: "Quick slide",
+    votes: 13
   },
   {
-    type: "Bullets",
-    votes: 5
+    type: "Quick slide",
+    votes: 9
   },
   {
-    type: "Quick form",
-    votes: 5
+    type: "Quick slide",
+    votes: 11
+  },
+  {
+    type: "Quick slide",
+    votes: 11
   }
 ];
 
@@ -68,7 +68,7 @@ class LineChart extends PureComponent {
       .rangeRound([0, width]);
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(data, d => d.votes)])
+      .domain([0, d3.max(data, d => d.votes) + 2])
       .nice()
       .range([height, 0]);
     const xAxis = d3
