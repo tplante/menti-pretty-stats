@@ -113,8 +113,16 @@ class AsterPlot extends PureComponent {
       .append("path")
       .attr("class", "arc")
       .attr("fill", d => d.data.color)
+      .attr("fill-opacity", 1)
       .attr("d", arc)
-      .on("mouseover", d => {
+      .on("mouseover", function(d) {
+        path.attr("fill-opacity", 0.5);
+        d3.selectAll(".arc")
+          .transition()
+          .attr("fill-opacity", 0.5);
+        d3.select(this)
+          .transition()
+          .attr("fill-opacity", 1);
         tooltip.select("text").text(d.data.type);
         tooltip
           .select("circle")
@@ -122,7 +130,12 @@ class AsterPlot extends PureComponent {
           .attr("fill", d.data.color);
         tooltip.transition().attr("opacity", 1);
       })
-      .on("mouseout", () => tooltip.transition().attr("opacity", 0));
+      .on("mouseout", function() {
+        d3.selectAll(".arc")
+          .transition()
+          .attr("fill-opacity", 1);
+        tooltip.transition().attr("opacity", 0);
+      });
   };
 
   render() {
