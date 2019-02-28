@@ -696,6 +696,14 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@mentimeter/ragnar-fonts/-/ragnar-fonts-1.0.0.tgz#715770a2dea277f8cfa373198628216830294dc5"
 
+"@mentimeter/ragnar-moods@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@mentimeter/ragnar-moods/-/ragnar-moods-1.0.15.tgz#8cbd0d7c9d1b5aa3a27c7c0b45ce95a880030403"
+  dependencies:
+    "@mentimeter/ragnar-colors" "1.1.3"
+    "@mentimeter/ragnar-dsc" "1.0.6"
+    "@mentimeter/ragnar-react" "1.1.1"
+
 "@mentimeter/ragnar-react@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@mentimeter/ragnar-react/-/ragnar-react-1.1.1.tgz#6db53667b9763416350f8749e83b2380c8cd8033"

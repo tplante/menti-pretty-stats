@@ -1,11 +1,6 @@
 import React, { PureComponent, createRef } from "react";
 import * as d3 from "d3";
-import {
-  poodle,
-  huskyDark,
-  labradorLight,
-  blue
-} from "@mentimeter/ragnar-colors";
+import { poodle, poodleDark, huskyDark, blue } from "@mentimeter/ragnar-colors";
 
 // Components
 import { Box } from "@mentimeter/ragnar-web";
@@ -49,11 +44,10 @@ const LAYOUT = {
   width: 960,
   height: 540
 };
-const MARGIN = { top: 20, right: 20, bottom: 85, left: 70 };
+const MARGIN = { top: 20, right: 20, bottom: 50, left: 40 };
 const TICK_PADDING = 15;
 const STROKE_WIDTH = 3;
 const FONT_SIZE = 14;
-const LARGE_FONT_SIZE = 18;
 
 class LineChart extends PureComponent {
   node = createRef();
@@ -105,27 +99,9 @@ class LineChart extends PureComponent {
       .attr("stroke-width", STROKE_WIDTH);
     axes.selectAll("text").attr("font-size", FONT_SIZE);
     axes.selectAll("line").attr("stroke", huskyDark);
-    x.append("text")
-      .text("Slide number")
-      .attr("x", width / 2)
-      .attr("y", MARGIN.bottom)
-      .attr("dy", "-0.35em")
-      .attr("text-anchor", "middle")
-      .attr("font-weight", "bold")
-      .attr("fill", labradorLight)
-      .attr("font-size", LARGE_FONT_SIZE);
-    y.append("text")
-      .text("Vote count")
-      .attr("x", -height / 2)
-      .attr("y", -MARGIN.left)
-      .attr("transform", "rotate(-90)")
-      .attr("dy", "1em")
-      .attr("text-anchor", "middle")
-      .attr("font-weight", "bold")
-      .attr("fill", labradorLight)
-      .attr("font-size", LARGE_FONT_SIZE);
-    x.selectAll("text")
-      .attr("fill", labradorLight)
+    axes
+      .selectAll("text")
+      .attr("fill", poodleDark)
       .attr("font-weight", "bold");
     x.selectAll(".tick")
       .append("text")
@@ -166,7 +142,7 @@ class LineChart extends PureComponent {
 
   render() {
     return (
-      <Box width="100%" maxWidth={LAYOUT.width - MARGIN.left - MARGIN.right}>
+      <Box width="100%" maxHeight={LAYOUT.height - MARGIN.top - MARGIN.bottom}>
         <svg
           width="100%"
           height="100%"
