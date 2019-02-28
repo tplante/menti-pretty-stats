@@ -50,7 +50,7 @@ const Content = () => (
     </Text>
 
     <Box alignItems="center" width="100%" p={4}>
-      <Text fontSize={5} fontWeight="bold">
+      <Text fontSize={5} fontWeight="bold" mb={3}>
         Aster Plot
       </Text>
       <AsterPlot />
